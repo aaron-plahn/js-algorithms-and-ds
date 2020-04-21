@@ -1,0 +1,25 @@
+{
+  "name": "js-algorithms-and-ds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaron-plahn/js-algorithms-and-ds.git"
+  },
+  "keywords": [
+    "data",
+    "structures",
+    "algorithms",
+    "javascript"
+  ],
+  "author": "Aaron Plahn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaron-plahn/js-algorithms-and-ds/issues"
+  },
+  "homepage": "https://github.com/aaron-plahn/js-algorithms-and-ds#readme"
+}
