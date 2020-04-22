@@ -1,4 +1,5 @@
 console.log(areThereDuplicates(1,2,3,'b',8,4,'b'));
+// passed
 function areThereDuplicates(...theArgs){
     // handle trivially false (no argumets)
     if(theArgs.length === 0){

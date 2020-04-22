@@ -1,4 +1,4 @@
-"use strict";
+// passed
 console.log(sameFrequency(341,134));
 function sameFrequency(n1,n2){
     let string1 = n1.toString();
