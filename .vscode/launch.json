@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\product-of-array.js"
+            "program": "${workspaceFolder}\\is-palindrome.js"
         }
     ]
 }
