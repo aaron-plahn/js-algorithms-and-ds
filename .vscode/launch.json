@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\min-subarray-len.js"
+            "program": "${workspaceFolder}\\product-of-array.js"
         }
     ]
 }
