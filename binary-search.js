@@ -5,8 +5,7 @@ function binarySearch(a,target){
     let leftPointer = 0;
     let rightPointer = a.length-1;
     let middlePointer = calculateMidpoint(leftPointer,rightPointer);
-    let targetAtIndex = false;
-    while(rightPointer - leftPointer > 1 && !targetAtIndex){
+    while(rightPointer - leftPointer > 1){
         if(a[middlePointer] === target){
             return middlePointer;
         }
