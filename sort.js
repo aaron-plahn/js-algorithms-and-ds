@@ -1,8 +1,9 @@
 'use strict';
 console.log(bubbleSort([4,2,3,6,3,1,9,7]));
 function bubbleSort(a){
-    let noSwaps = true;
+    let noSwaps;
     for(let i = a.length; i>0; i--){
+        noSwaps = true;
         for(let j=0; j < i; j++){
             if(a[j]>a[j+1]){
                 swapArrayElementsAtIndices(a,j,j+1);
