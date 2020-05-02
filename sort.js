@@ -1,5 +1,5 @@
 'use strict';
-console.log(selectionSort([4,2,3,6,3,1,9,7]));
+console.log(insertionSort([4,2,3,6,3,1,9,7]));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -25,6 +25,17 @@ function selectionSort(a){
             }
         }
         if(minIndex != left) swapArrayElementsAtIndices(a,left,minIndex);
+    }
+    return a;
+}
+
+function insertionSort(a){
+    for(let elementToInsertIndex = 1; elementToInsertIndex < a.length; elementToInsertIndex++){
+        let j = elementToInsertIndex - 1;
+        while(a[j] > a[j+1]){
+            swapArrayElementsAtIndices(a,j,j+1);
+            j--;
+        }
     }
     return a;
 }
