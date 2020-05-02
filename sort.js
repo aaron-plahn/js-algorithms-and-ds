@@ -1,5 +1,5 @@
 'use strict';
-console.log(bubbleSort([4,2,3,6,3,1,9,7]));
+console.log(selectionSort([4,2,3,6,3,1,9,7]));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -11,6 +11,20 @@ function bubbleSort(a){
             } 
         }
         if(noSwaps) break;
+    }
+    return a;
+}
+
+function selectionSort(a){
+    for(let left = 0; left < a.length - 1; left++){
+        let minIndex = left;
+        for(let j = left + 1; j < a.length; j++){
+            if(a[j] < a[minIndex]){
+                minIndex = j;
+                console.log(`Minimum Index: ${minIndex} for ${a[minIndex]}`);
+            }
+        }
+        if(minIndex != left) swapArrayElementsAtIndices(a,left,minIndex);
     }
     return a;
 }
