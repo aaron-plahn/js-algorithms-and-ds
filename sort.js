@@ -1,5 +1,5 @@
 'use strict';
-console.log(mergeSortedArrays([1,2,4,7],[1,3,5,9]));
+console.log(mergeSortedArrays([1,3,4],[1,2,5,7]));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -40,6 +40,15 @@ function insertionSort(a){
     return a;
 }
 
+function mergeSort(a){
+    if(a.length === 0 || a.length === 1) return a;
+    let midIndex = Math.floor(a.length/2);
+    let left = mergeSort(a.slice(0,midIndex)); // start to midIndex - 1
+    let right = mergeSort(a.slice(midIndex)); // midIndex to end
+    console.log(`Merging sorted arrays: ${left} and ${right} to get ${mergeSortedArrays(left,right)}`);
+    return mergeSortedArrays(left,right);
+}
+
 function swapArrayElementsAtIndices(a,i,j){
     let length = a.length;
     if(i >= length || i < 0 || j >= length || j < 0 ) throw new Error(`Index out of bounds`);
@@ -52,8 +61,7 @@ function mergeSortedArrays(a1,a2){
     let i1 = 0; // 1st array pointer
     let i2 = 0; //2nd array pointer
     let mergedArray = [];
-    while(i1 < a1.length && i2 < a2.length){
-        debugger;
+    while(i1 < a1.length || i2 < a2.length){
         if(i1 === a1.length){
             mergedArray.push(a2[i2]);
             i2++;
@@ -64,6 +72,7 @@ function mergeSortedArrays(a1,a2){
             i1++;
             continue;
         }
+        debugger;
         if(a1[i1] < a2[i2]){
             mergedArray.push(a1[i1]);
             i1++;
