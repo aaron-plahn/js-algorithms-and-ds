@@ -1,5 +1,5 @@
 'use strict';
-console.log(mergeSortedArrays([1,3,4],[1,2,5,7]));
+console.log(mergeSort([5,2,8,3,6,5,1]));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
