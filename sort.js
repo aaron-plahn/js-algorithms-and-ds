@@ -1,5 +1,5 @@
 'use strict';
-console.log(partitionArray([5,2,8,3,6,5,1], selectFirstIndex));
+console.log(partitionArray([5,5,4,8,3,1,6],1,5,selectFirstIndex));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -84,22 +84,31 @@ function mergeSortedArrays(a1,a2){
     return mergedArray;
 }
 
-function partitionArray(a,pivotIndexSelector){
-    let pivotIndex = pivotIndexSelector(a); // pick a partition
-    if(pivotIndex != 0) swapArrayElementsAtIndices(a,0,pivotIndex); // put pivot in 0th position
-    let newPivotIndex = 0;
-    for(let i = 1; i<a.length; i++){
-        if(a[i]<=a[0]){
+function quickSort(a,start,end){
+    if(start < end){
+        let pivot = start + partitionArray(a.slice(start,end+1),selectFirstIndex); // shift pivot for offset
+        quickSort(a,start,pivot - 1);
+        quickSort(a,pivot+1,end);
+    }
+    return a;
+}
+
+function partitionArray(a,start,end,pivotIndexSelector){
+    let pivotIndex = pivotIndexSelector(a,start,end); // pick a partition
+    if(pivotIndex != start) swapArrayElementsAtIndices(a,start,pivotIndex); // put pivot in 0th position
+    let newPivotIndex = start;
+    for(let i = start+1; i<a.length; i++){
+        if(a[i]<=a[start]){
             newPivotIndex++;
             swapArrayElementsAtIndices(a,newPivotIndex,i);
         }
     }
-    swapArrayElementsAtIndices(a,0,newPivotIndex);
+    swapArrayElementsAtIndices(a,start,newPivotIndex);
     console.log(`Updated array: ${a}`);
     return newPivotIndex;
 }
 
 // This is trivial but leave open possible of more sophisticated approach later
-function selectFirstIndex(a){
-    return 0;
+function selectFirstIndex(a,start,end){
+    return start;
 }
