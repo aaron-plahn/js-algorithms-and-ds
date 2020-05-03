@@ -1,5 +1,6 @@
 'use strict';
-console.log(partitionArray([5,5,4,8,3,1,6],1,5,selectFirstIndex));
+let arrayToTest = [44,-2,65,301,11,52,5,3,1];
+console.log(quickSort(arrayToTest,0,arrayToTest.length - 1));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -86,7 +87,7 @@ function mergeSortedArrays(a1,a2){
 
 function quickSort(a,start,end){
     if(start < end){
-        let pivot = start + partitionArray(a.slice(start,end+1),selectFirstIndex); // shift pivot for offset
+        let pivot = partitionArray(a,start,end,selectFirstIndex); // shift pivot for offset
         quickSort(a,start,pivot - 1);
         quickSort(a,pivot+1,end);
     }
