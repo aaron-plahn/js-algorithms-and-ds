@@ -1,5 +1,5 @@
 'use strict';
-console.log(mergeSort([5,2,8,3,6,5,1]));
+console.log(partitionArray([5,2,8,3,6,5,1], selectFirstIndex));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -82,4 +82,23 @@ function mergeSortedArrays(a1,a2){
         }
     }
     return mergedArray;
+}
+
+function partitionArray(a,pivotIndexSelector){
+    let pivotIndex = pivotIndexSelector(a); // pick a partition
+    if(pivotIndex != 0) swapArrayElementsAtIndices(a,0,pivotIndex); // put pivot in 0th position
+    let newPivotIndex = 0;
+    for(let i = 1; i<a.length; i++){
+        if(a[i]<=a[0]){
+            newPivotIndex++;
+            swapArrayElementsAtIndices(a,newPivotIndex,i);
+        }
+    }
+    swapArrayElementsAtIndices(a,0,newPivotIndex);
+    return a;
+}
+
+// This is trivial but leave open possible of more sophisticated approach later
+function selectFirstIndex(a){
+    return 0;
 }
