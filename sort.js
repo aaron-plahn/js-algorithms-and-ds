@@ -95,7 +95,8 @@ function partitionArray(a,pivotIndexSelector){
         }
     }
     swapArrayElementsAtIndices(a,0,newPivotIndex);
-    return a;
+    console.log(`Updated array: ${a}`);
+    return newPivotIndex;
 }
 
 // This is trivial but leave open possible of more sophisticated approach later
