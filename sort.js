@@ -1,6 +1,6 @@
 'use strict';
-let arrayToTest = [44,-2,65,3013,11,52,5,334,1];
-console.log(getMaxNumberDecimalPlacesInIntegerArray(arrayToTest));
+let arrayToTest = [44,2,65,3013,11,52,5,334,1];
+console.log(radixSort(arrayToTest));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -48,6 +48,20 @@ function mergeSort(a){
     let right = mergeSort(a.slice(midIndex)); // midIndex to end
     console.log(`Merging sorted arrays: ${left} and ${right} to get ${mergeSortedArrays(left,right)}`);
     return mergeSortedArrays(left,right);
+}
+
+function radixSort(a){
+    // expected that a is an array of positive integers
+    let mostDigits = getMaxNumberDecimalPlacesInIntegerArray(a);
+    for(let i=0; i<mostDigits + 1; i++){
+        console.log(`On ${i}th digit.`);
+        let buckets = Array.from({length:10},()=>[]); // create array of 10 empty arrays
+        for(let j=0; j<a.length; j++){
+            buckets[getDigitInPlace(a[j],i)].push(a[j]); // put ith value in its digit bucket
+        }
+        a = [].concat(...buckets);
+    }
+    return a;
 }
 
 function swapArrayElementsAtIndices(a,i,j){
