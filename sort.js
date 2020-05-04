@@ -1,6 +1,6 @@
 'use strict';
-let arrayToTest = [44,-2,65,301,11,52,5,3,1];
-console.log(quickSort(arrayToTest,0,arrayToTest.length - 1));
+let arrayToTest = [44,-2,65,3013,11,52,5,334,1];
+console.log(getMaxNumberDecimalPlacesInIntegerArray(arrayToTest));
 function bubbleSort(a){
     let noSwaps;
     for(let i = a.length; i>0; i--){
@@ -113,3 +113,23 @@ function partitionArray(a,start,end,pivotIndexSelector){
 function selectFirstIndex(a,start,end){
     return start;
 }
+
+function getDigitInPlace(n,powerOfTen){
+    n = Math.abs(n);
+    return Math.floor(n/10**powerOfTen) % 10;
+}
+
+function numberOfDigits(n){
+    n = Math.abs(n);
+    return Math.floor(Math.log10(n)) + 1;
+}
+
+function getMaxNumberDecimalPlacesInIntegerArray(a){
+    let maxNumberDigits = 0;
+    for(let i=1; i<a.length; i++){
+        let numberDigits = numberOfDigits(a[i]);
+        if(numberDigits > maxNumberDigits) maxNumberDigits = numberDigits;
+    }
+    return maxNumberDigits;
+}
+
