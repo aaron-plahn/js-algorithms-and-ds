@@ -45,6 +45,11 @@ class SinglyLinkedList{
         this.tail = newTail;
         this.tail.next = null;
         this.length--;
+        if(this.length === 0){
+            // reset
+            this.head = null;
+            this.tail = null;
+        }
         return current;
     }
 
@@ -69,3 +74,10 @@ l.push(" buddy!");
 l.push(" hey!");
 console.log("I've got a new friend.");
 l.printList();
+l.pop();
+l.pop();
+l.pop();
+l.pop();
+console.log(`Should be empty.`);
+l.printList();
+l.pop();
