@@ -53,6 +53,14 @@ class SinglyLinkedList{
         return current;
     }
 
+    shift(){
+        if(!this.head) return undefined;
+        let temp = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return temp;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -81,3 +89,10 @@ l.pop();
 console.log(`Should be empty.`);
 l.printList();
 l.pop();
+console.log(`Attempting null shift`);
+l.shift();
+l.push("Why");
+l.push(" hello");
+l.shift();
+console.log(`Now shifted`);
+l.printList();
