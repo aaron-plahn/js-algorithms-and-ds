@@ -62,6 +62,22 @@ class SinglyLinkedList{
         return temp;
     }
 
+    unshift(v){
+        let newNode = new Node(v);
+        console.log(`newNode: ${newNode.val}`);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+            console.log(`New head value: ${this.head.val}`);
+        }else{
+            console.log(`The newNode: ${newNode}`);
+            newNode.next = this.head; // Point new node's next to old head
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -96,4 +112,7 @@ l.push("Why");
 l.push(" hello");
 l.shift();
 console.log(`Now shifted`);
+l.printList();
+console.log(`Let's unshift`);
+console.log(l.unshift("Firstly "));
 l.printList();
