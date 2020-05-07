@@ -78,6 +78,18 @@ class SinglyLinkedList{
         return this;
     }
 
+    getNode(index){
+        if(index < 0 || index >= this.length){
+            console.log(`Index out of bounds.`);
+            return null;
+        }
+        let current = this.head;
+        for(let i=0; i<index; i++){
+            current = current.next;
+        }
+        return current;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -116,3 +128,12 @@ l.printList();
 console.log(`Let's unshift`);
 console.log(l.unshift("Firstly "));
 l.printList();
+l.pop();
+l.pop();
+l.pop();
+l.push("0");
+l.push("1");
+l.push("2");
+l.push("3");
+l.printList();
+console.log(`0th node: ${l.getNode(0).val}`);
