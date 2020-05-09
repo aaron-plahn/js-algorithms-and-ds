@@ -27,14 +27,6 @@ class SinglyLinkedList{
 
     pop(){
         if(!this.head) return undefined;
-        /*
-        if(this.length === 1){
-            let temp = this.head;
-            this.head = null;
-            this.tail = null;
-            this.length = 0;
-            return temp;
-        } */
         let previous;
         let current = this.head;
         let newTail = current;
@@ -90,6 +82,15 @@ class SinglyLinkedList{
         return current;
     }
 
+    setNode(index,newValue){
+        let node = this.getNode(index);
+        if(node){
+            node.val = newValue;
+            return true;
+        } 
+        return false;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -103,37 +104,6 @@ let l = new SinglyLinkedList();
 l.push("Hi");
 l.push(" my");
 l.push(" friend.");
+console.log(`GET node 1 ${l.getNode(1)}`);
+console.log(`SET node 1 ${l.setNode(1,"your")}`);
 l.printList();
-console.log("Sorry, you've been popped, my friend.");
-console.log(`Pop goes the ${l.pop().val}`);
-l.printList();
-l.push(" buddy!");
-l.push(" hey!");
-console.log("I've got a new friend.");
-l.printList();
-l.pop();
-l.pop();
-l.pop();
-l.pop();
-console.log(`Should be empty.`);
-l.printList();
-l.pop();
-console.log(`Attempting null shift`);
-l.shift();
-l.push("Why");
-l.push(" hello");
-l.shift();
-console.log(`Now shifted`);
-l.printList();
-console.log(`Let's unshift`);
-console.log(l.unshift("Firstly "));
-l.printList();
-l.pop();
-l.pop();
-l.pop();
-l.push("0");
-l.push("1");
-l.push("2");
-l.push("3");
-l.printList();
-console.log(`0th node: ${l.getNode(0).val}`);
