@@ -91,6 +91,21 @@ class SinglyLinkedList{
         return false;
     }
 
+    insert(index,value){
+        // edge cases
+        if( index<0 || index>this.length) return false;
+        if( index===0 ) return !!this.unshift(value);
+        if( index===this.length ) return !!this.push(value); // insert to end = push
+
+        // standard case
+        let prev = this.getNode(index-1); // will insert after prev
+        let newNode = new Node(value);
+        newNode.next = prev.next; // poit new node's next to the element originally at index
+        prev.next = newNode; // change previous node's next to new node
+        this.length++;
+        return true;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -104,6 +119,5 @@ let l = new SinglyLinkedList();
 l.push("Hi");
 l.push(" my");
 l.push(" friend.");
-console.log(`GET node 1 ${l.getNode(1)}`);
-console.log(`SET node 1 ${l.setNode(1,"your")}`);
+console.log(`Insert worked: ${l.insert(2,"Hey")}`);
 l.printList();
