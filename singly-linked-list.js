@@ -106,6 +106,19 @@ class SinglyLinkedList{
         return true;
     }
 
+    remove(index){
+        // edge cases
+        if(index<0 || index>=this.length) return undefined;
+        if(index===0) return this.shift();
+        if(index===this.length-1) return this.pop();
+        // standard case
+        let prev = this.getNode(index-1); // get reference to node before the one to remove
+        let nodeToRemove = prev.next;
+        prev.next = nodeToRemove.next; // bypass node to remove in list
+        this.length--;
+        return nodeToRemove;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -120,4 +133,7 @@ l.push("Hi");
 l.push(" my");
 l.push(" friend.");
 console.log(`Insert worked: ${l.insert(2,"Hey")}`);
+l.printList();
+console.log(`Removing node : ${l.remove(2).val}`);
+console.log(`List exists: ${!!l}`);
 l.printList();
