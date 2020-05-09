@@ -1,3 +1,4 @@
+'use strict';
 class Node {
     constructor(val){
         this.val = val;
@@ -119,6 +120,25 @@ class SinglyLinkedList{
         return nodeToRemove;
     }
 
+    reverse(){
+        if(this.length===0 || this.length===1) return this;
+        let prev = this.head;
+        let current = prev.next;
+        prev.next = null; // set next for 0 (new tail)
+        // swap head and tail
+        let oldTail = this.tail;
+        this.tail = this.head;
+        this.head = oldTail;
+        // reverse inner nodes in place
+        while(current){
+            let next = current.next; // get reference to next before breaking link
+            current.next = prev; // now reverse current node to point to previous node
+            prev = current; // keep reference to this node for the next go round
+            current = next; // process the next node in the next iteration
+        }
+        return this;
+    }
+
     printList(){
         let current = this.head;
         for(let i=0; i<this.length; i++){
@@ -136,4 +156,6 @@ console.log(`Insert worked: ${l.insert(2,"Hey")}`);
 l.printList();
 console.log(`Removing node : ${l.remove(2).val}`);
 console.log(`List exists: ${!!l}`);
+l.printList();
+l.reverse();
 l.printList();
