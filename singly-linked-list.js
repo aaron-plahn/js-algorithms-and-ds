@@ -158,4 +158,5 @@ console.log(`Removing node : ${l.remove(2).val}`);
 console.log(`List exists: ${!!l}`);
 l.printList();
 l.reverse();
+debugger;
 l.printList();

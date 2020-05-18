@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\singly-linked-list.js"
+            "program": "${workspaceFolder}\\doubly-linked-list.js"
         }
     ]
 }
