@@ -21,6 +21,19 @@ class Stack{
         return ++this.size;
     }
 
+    pop(){
+        if(this.size === 0) return null; //edge case
+        let nodeToRemove = this.first;
+        if(this.size === 1){
+            this.first = null;
+            this.last = null;
+        } else{
+            this.first = nodeToRemove.next;
+        }
+        this.size--;
+        return nodeToRemove;
+    }
+
     print(){
         let current = this.first;
         while(current){
@@ -35,4 +48,7 @@ s.push(2);
 s.push(3);
 s.print();
 console.log(`Push 4: ${s.push(4)}`);
-
+console.log(`Popping: ${s.pop().value}`);
+console.log(`Popping: ${s.pop().value}`);
+console.log(`Popping: ${s.pop().value}`);
+console.log(`Popping: ${s.pop().value}`);
