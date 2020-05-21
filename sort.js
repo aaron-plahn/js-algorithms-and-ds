@@ -53,13 +53,18 @@ function insertionSort(a){
     return a;
 }
 
-function mergeSort(a){
+function mergeSort(a,comparator){
+    if(typeof comparator !== 'function'){
+        comparator = function(a,b){
+            return a-b;
+        }
+    }
     if(a.length === 0 || a.length === 1) return a;
     let midIndex = Math.floor(a.length/2);
-    let left = mergeSort(a.slice(0,midIndex)); // start to midIndex - 1
-    let right = mergeSort(a.slice(midIndex)); // midIndex to end
-    console.log(`Merging sorted arrays: ${left} and ${right} to get ${mergeSortedArrays(left,right)}`);
-    return mergeSortedArrays(left,right);
+    let left = mergeSort(a.slice(0,midIndex),comparator); // start to midIndex - 1
+    let right = mergeSort(a.slice(midIndex),comparator); // midIndex to end
+    // console.log(`Merging sorted arrays: ${left} and ${right} to get ${mergeSortedArrays(left,right)}`);
+    return mergeSortedArrays(left,right,comparator);
 }
 
 function radixSort(a){
