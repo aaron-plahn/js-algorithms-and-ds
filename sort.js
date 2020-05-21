@@ -1,12 +1,18 @@
 'use strict';
 let arrayToTest = [44,2,65,3013,11,52,5,334,1];
-console.log(radixSort(arrayToTest));
-function bubbleSort(a){
+console.log(selectionSort(arrayToTest));
+function bubbleSort(a,comparator){
+    if(typeof comparator !== 'function'){
+        comparator = function(a,b){
+            return a-b;
+        }
+    }
     let noSwaps;
     for(let i = a.length; i>0; i--){
         noSwaps = true;
         for(let j=0; j < i; j++){
-            if(a[j]>a[j+1]){
+            //if(a[j]>a[j+1]){
+            if(comparator(a[j],a[j+1])>0){
                 swapArrayElementsAtIndices(a,j,j+1);
                 noSwaps = false;
             } 
@@ -16,11 +22,17 @@ function bubbleSort(a){
     return a;
 }
 
-function selectionSort(a){
+function selectionSort(a,comparator){
+    if(typeof comparator !== 'function'){
+        comparator = function(a,b){
+            return a-b;
+        }
+    }
     for(let left = 0; left < a.length - 1; left++){
         let minIndex = left;
         for(let j = left + 1; j < a.length; j++){
-            if(a[j] < a[minIndex]){
+            // if(a[j] < a[minIndex]){
+            if(comparator(a[j],a[minIndex])<0){
                 minIndex = j;
                 console.log(`Minimum Index: ${minIndex} for ${a[minIndex]}`);
             }
@@ -72,7 +84,12 @@ function swapArrayElementsAtIndices(a,i,j){
     a[j] = temp;
 }
 
-function mergeSortedArrays(a1,a2){
+function mergeSortedArrays(a1,a2,comparator){
+    if(typeof comparator !== 'function'){
+        comparator = function(a,b){
+            return a-b;
+        }
+    }
     let i1 = 0; // 1st array pointer
     let i2 = 0; //2nd array pointer
     let mergedArray = [];
@@ -87,8 +104,8 @@ function mergeSortedArrays(a1,a2){
             i1++;
             continue;
         }
-        debugger;
-        if(a1[i1] < a2[i2]){
+        // if(a1[i1] < a2[i2]){
+        if(comparator(a1[i1],a2[i2])<0){
             mergedArray.push(a1[i1]);
             i1++;
         }else{

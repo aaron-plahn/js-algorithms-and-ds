@@ -31,7 +31,7 @@ class Stack{
             this.first = nodeToRemove.next;
         }
         this.size--;
-        return nodeToRemove;
+        return nodeToRemove.value;
     }
 
     print(){
