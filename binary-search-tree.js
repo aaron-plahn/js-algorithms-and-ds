@@ -103,6 +103,42 @@ class BinarySearchTree{
         }
         return nodeValues;
     }
+
+    depthFirstSearchPreOrder(){
+        let nodeValues = [];
+        let current = this.root;
+        function traverse(node){
+            nodeValues.push(node.value);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return nodeValues;
+    }
+
+    depthFirstSearchInOrder(){
+        let nodeValues = [];
+        let current = this.root;
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            nodeValues.push(node.value);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return nodeValues;
+    }
+
+    depthFirstSearchPostOrder(){
+        let nodeValues = [];
+        let current = this.root;
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            nodeValues.push(node.value);
+        }
+        traverse(this.root);
+        return nodeValues;
+    }
     
     print(){
         printNode(this.root);
@@ -119,12 +155,11 @@ class BinarySearchTree{
 }
 
 let b = new BinarySearchTree();
-b.insert(5).insert(3).insert(8).insert(32).insert(7).insert(1);
-/* b.insert(3);
+b.insert(3);
 b.insert(8);
 b.insert(32);
 b.insert(7);
-b.insert(1); */
+b.insert(1); 
 console.log(`Find 3: ${b.find(3).value}`);
 console.log(`Find 22: ${b.find(22)}`);
 debugger;

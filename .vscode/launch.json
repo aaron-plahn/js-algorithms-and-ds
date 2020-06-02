@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\binary-search-tree.js"
+            "program": "${workspaceFolder}\\binary-heap.js"
         }
     ]
 }
