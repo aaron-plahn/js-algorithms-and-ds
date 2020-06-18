@@ -41,7 +41,6 @@ class Trie{
     }
 
     deleteRecursively(word,current,index){
-        debugger;
         if(index === word.length){
             if(!current.endOfWord) return false;
             current.endOfWord = false; // delete word if it was there
@@ -57,16 +56,52 @@ class Trie{
         }
         return false;
     }
+
+    autoComplete(prefix){
+        let current = this.root;
+        let autoCompletionOptions = [];
+        // 0 -> root (does not correspond to letter)
+        // 1-> first letters
+        for(let i=0; i<prefix.length; i++){
+            let currentChar = prefix.charAt(i);
+            current = current.children[currentChar];
+            if(!current) return null;
+        }
+        // current should now be the node corresponding to the end of start (prefix)
+        let results = []; // autocomplete candidates to return
+       // console.log(`Getting autocompletion options for prefix ${prefix}`);
+        autoCompleteHelper(prefix,current);
+        function autoCompleteHelper(currentString, node){
+            let keys = Object.keys(node.children);
+            if(!keys.length) return;
+            keys.forEach((key,index)=>{
+                let updatedString = currentString + key;
+                if(node.children[key].endOfWord) results.push(updatedString);
+                autoCompleteHelper(updatedString,node.children[key]);
+            })
+        }
+        return results;
+    }
 }
 
 let t = new Trie();
 t.insert("bat");
 t.insert("bob");
 t.insert("ball");
+t.insert("baller");
+t.insert("total");
+t.insert("tot");
 t.insert("tom");
+t.insert("tape");
+t.insert("cock");
 console.log(`Trie contains the word bob: ${t.search("bob")}`);
 console.log(`Trie contains the word bobby: ${t.search("bobby")}`);
 t.insert("bobby");
 console.log(`Deleted the word bob: ${t.delete("bob")}`);
 console.log(`Trie contains the word bob: ${t.search("bob")}`);
 console.log(`Trie contains the word bobby: ${t.search("bobby")}`);
+console.log(`t.autoComplete("b"): ${t.autoComplete("b")}`);
+console.log(`t.autoComplete("ba"): ${t.autoComplete("ba")}`);
+console.log(`t.autoComplete("t"): ${t.autoComplete("t")}`);
+console.log(`t.autoComplete("ta"): ${t.autoComplete("ta")}`);
+console.log(`t.autoComplete("f"): ${t.autoComplete("f")}`);
