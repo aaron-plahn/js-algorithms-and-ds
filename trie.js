@@ -82,6 +82,10 @@ class Trie{
         }
         return results;
     }
+
+    getAllWords(){
+        return this.autoComplete("");
+    }
 }
 
 let t = new Trie();
@@ -105,3 +109,4 @@ console.log(`t.autoComplete("ba"): ${t.autoComplete("ba")}`);
 console.log(`t.autoComplete("t"): ${t.autoComplete("t")}`);
 console.log(`t.autoComplete("ta"): ${t.autoComplete("ta")}`);
 console.log(`t.autoComplete("f"): ${t.autoComplete("f")}`);
+console.log(`t.getAllWords(): ${t.getAllWords()}`);
