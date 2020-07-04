@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\trie.js"
+            "program": "${workspaceFolder}\\stringify-numbers.js"
         }
     ]
 }
