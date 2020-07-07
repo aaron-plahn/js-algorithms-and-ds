@@ -15,7 +15,6 @@ function coinChange(denominations,value){
     solution[0][0] = 1;
     // @TODO can we avoid the nested loop?
     for(let i = 0; i<denominations.length; i++){ // loop over denominations (row by row)
-        debugger;
         for(let j = 0; j<=value; j++){ // traverse rows (all values from)
             if(i===0 && j===0){
                 solution[0][0] = 1;
