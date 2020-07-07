@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\stringify-numbers.js"
+            "program": "${workspaceFolder}\\coin-change.js"
         }
     ]
 }

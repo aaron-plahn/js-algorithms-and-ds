@@ -1,21 +1,40 @@
 'use strict';
+let o = {
+    x: 2,
+    dogs: {
+        y: 2,
+        z: 5,
+        k: 16,
+        l: {
+            a: 3,
+            b:4
+        }
+    },
+    total: {
+        chaos: {
+            t: 2,
+            j: 8,
+            d: 87
+        }
+    },
+    horses: [1,2,7,8]
+}
+console.log(`collectStrings(o) = ${collectStrings(o)}`);
+console.log(collectStrings(o));
 function collectStrings(o){
-    let results = [];
-    collectStringsHelper(o);
-    return results;
-    function collectStringsHelper(so){
-        let keys = Object.keys(so);
-        keys.forEach((key,index)=>{
-            let value = so[key];
-            if(isObject(value)) collectStringsHelper(value);
-            debugger;
-            if (typeof value === 'string' || value instanceof String) results.push(value);
-        })
+    let result = [];
+    for(let key in o){
+        if(isObject(o[key])){
+            result = result.concat(collectStrings(o[key]));
+        } else if(typeof o[key] === 'string'){
+            result.push(o[key]);
+        } // ignore non-string, non-objects
     }
+    return result;
 }
 
 function isObject(o){
-    return typeof yourVariable === 'object' && yourVariable !== null;
+    return typeof o === 'object' && o !== null;
 }
 console.log(`Collect strings: ${collectStrings({
     a: "hi",
