@@ -13,7 +13,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\coin-change.js"
+            "program": "${workspaceFolder}\\sorted-frequency.js"
         }
     ]
 }
